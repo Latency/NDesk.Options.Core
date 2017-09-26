@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>NDesk.Options</id>
+    <version>0.2.2</version>
+    <authors>Latency McLaughlin</authors>
+    <owners>Latency McLaughlin</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>http://latency.github.io/TINTIN-.NET/</projectUrl>
+    <iconUrl>http://bio-hazard.us/ico/kitty.ico</iconUrl>
+    <description>A callback-based program option parser for C#.</description>
+    <copyright>Copyright ©  1998-2017</copyright>
+    <tags>C# options parser</tags>
+    <repository type="GIT" url="https://github.com/Latency/NDesk.Options/" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.7" />
+      <group targetFramework=".NETStandard2.0" />
+      <group targetFramework=".NETCoreApp2.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\bin\Debug\net47\NDesk.Options.dll" target="lib\net47\NDesk.Options.dll" />
+    <file src="D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\bin\Debug\netcoreapp2.0\NDesk.Options.dll" target="lib\netcoreapp2.0\NDesk.Options.dll" />
+    <file src="D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\bin\Debug\netstandard2.0\NDesk.Options.dll" target="lib\netstandard2.0\NDesk.Options.dll" />
+  </files>
+</package>

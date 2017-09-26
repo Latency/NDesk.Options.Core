@@ -1,0 +1,8 @@
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\bin\Debug\netcoreapp2.0\NDesk.Options.deps.json
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\bin\Debug\netcoreapp2.0\NDesk.Options.dll
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\bin\Debug\netcoreapp2.0\NDesk.Options.pdb
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\obj\Debug\netcoreapp2.0\NDesk.Options.csproj.CoreCompileInputs.cache
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\obj\Debug\netcoreapp2.0\NDesk.Options.AssemblyInfoInputs.cache
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\obj\Debug\netcoreapp2.0\NDesk.Options.AssemblyInfo.cs
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\obj\Debug\netcoreapp2.0\NDesk.Options.dll
+D:\Documents\Visual Studio 2017\Projects\NDesk.Options\Src\obj\Debug\netcoreapp2.0\NDesk.Options.pdb
