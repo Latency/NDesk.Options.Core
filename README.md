@@ -34,41 +34,45 @@ when the option is encountered.  It's entirely callback based:
 See:  <a href="http://www.ndesk.org/Options">http://www.ndesk.org/Options</a>
 
 <h2><a name="usage">Usage</a></h2>
-```
-	var verbose = 0;
-	var show_help = false;
-	var names = new List<string> ();
 
-	var p = new OptionSet () {
-		{ "v|verbose", v => { if (v != null) ++verbose; } },
-		{ "h|?|help",  v => { show_help = v != null; } },
-		{ "n|name=",   v => { names.Add (v); } },
-	};
+```csharp
+var verbose = 0;
+var show_help = false;
+var names = new List<string> ();
+
+var p = new OptionSet () {
+  { "v|verbose", v => { if (v != null) ++verbose; } },
+  { "h|?|help",  v => { show_help = v != null; } },
+  { "n|name=",   v => { names.Add (v); } },
+};
 ```
+
 However, C# 3.0 features are not required, and can be used with C# 2.0:
-```
-	int          verbose   = 0;
-	bool         show_help = false;
-	List<string> names     = new List<string> ();
 
-	OptionSet p = new OptionSet ()
-	  .Add ("v|verbose", delegate (string v) { if (v != null) ++verbose; })
-	  .Add ("h|?|help",  delegate (string v) { show_help = v != null; })
-	  .Add ("n|name=",   delegate (string v) { names.Add (v); });
+```csharp
+int          verbose   = 0;
+bool         show_help = false;
+List<string> names     = new List<string> ();
+
+OptionSet p = new OptionSet ()
+  .Add ("v|verbose", delegate (string v) { if (v != null) ++verbose; })
+  .Add ("h|?|help",  delegate (string v) { show_help = v != null; })
+  .Add ("n|name=",   delegate (string v) { names.Add (v); });
 ```
 
 <h2><a name="installation">Installation</a></h2>
 
 This library can be installed using NuGet:
 
+<pre>
 Enter the details:
 Name:    NDesk.Options
 Source:  nuget.org
+</pre>
 
 <h2><a name="license">License</a></h2>
 
 [MIT LICENSE]
-
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job.)
 
