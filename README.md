@@ -3,12 +3,18 @@
 
 ---
 
-* CREATED BY: Latency McLaughlin
-* FRAMEWORK:  .NET 4.7, .NET Core 2.0, .NET Standard 2.0
-* SUPPORTS:   Visual Studio 2017, 2015, 2013, 2012, 2010, 2008
-* UPDATED:    9/21/2017
-* TAGS:       C# NDesk.Options API
-* VERSION:    v0.2.2
+|              |                      |
+|--------------|----------------------|
+| CREATED BY:  | [Latency McLaughlin] |
+| UPDATED:     | 11/28/2018 |
+| FRAMEWORK:   | [.NET]Framework 4.7.2, [.NET]Standard 2.0, [.NET]Core 2.1 ([Latest](https://www.microsoft.com/net/download/windows)) |
+| LANGUAGE:    | [C#] (v7.3) |
+| OUTPUT TYPE: | [API] |
+| SUPPORTS:    | [Visual Studio] 2017, 2015, 2013, 2012, 2010, 2008 |
+| TAGS:        | [.NET], [NuGet], [MyGet], [API], [C#], [Visual Studio] |
+| STATUS:      | [![ndesk-options MyGet Build Status](https://www.myget.org/BuildSource/Badge/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f)](https://www.myget.org/) |
+| LICENSE:     | [![License](https://img.shields.io/badge/NDesk.Options-License-yellowgreen.svg?style=plastic)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE.txt) |
+| VERSION:     | [![Download](https://badge.fury.io/gh/Latency%2FNDesk.Options.svg)](https://www.myget.org/F/ndesk-options/api/v3/index.json) |
 
 <hr>
 
@@ -24,7 +30,7 @@
 
 <h2><a name="introduction">Introduction</a></h2>
 
-It takes advantage of C# 3.0 features such as collection initializers and
+It takes advantage of C# features such as collection initializers and
 lambda delegates to provide a short, concise specification of the option 
 names to parse, whether or not those options support values, and what to do 
 when the option is encountered.  It's entirely callback based:
@@ -47,8 +53,6 @@ var p = new OptionSet () {
 };
 ```
 
-However, C# 3.0 features are not required, and can be used with C# 2.0:
-
 ```csharp
 int          verbose   = 0;
 bool         show_help = false;
@@ -62,18 +66,25 @@ OptionSet p = new OptionSet ()
 
 <h2><a name="installation">Installation</a></h2>
 
-This library can be installed using NuGet:
-
-<pre>
-Enter the details:
-Name:    NDesk.Options
-Source:  nuget.org
-</pre>
+This library can be installed using NuGet found [here](https://www.nuget.org/packages/AssemblyLoader/).
 
 <h2><a name="license">License</a></h2>
 
 [MIT LICENSE]
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job.)
+
+   [.NET]: <https://en.wikipedia.org/wiki/.NET_Framework/>
+   [Console Application]: <https://en.wikipedia.org/wiki/Console_application>
+   [API]: <https://en.wikipedia.org/wiki/Application_programming_interface>
+   [C#]: <https://en.wikipedia.org/wiki/C_Sharp_(programming_language)>
+   [DLL]: <https://en.wikipedia.org/wiki/Dynamic-link_library>
+   [Latency McLaughlin]: <https://www.linkedin.com/in/Latency/>
+   [MIT License]: <http://choosealicense.com/licenses/mit/>
+   [MyGet]: <https://www.myget.org/features>
+   [NuGet]: <https://www.nuget.org/>
+   [Visual Studio]: <https://en.wikipedia.org/wiki/Microsoft_Visual_Studio/>
+   
+
 
    [MIT LICENSE]: <https://opensource.org/licenses/MIT>

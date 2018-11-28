@@ -15,7 +15,7 @@ using System.IO;
 using NDesk.Options;
 using NUnit.Framework;
 
-namespace Tests.NDesk.Options
+namespace Tests
 {
   internal class FooConverter : TypeConverter {
     public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) {
@@ -93,7 +93,7 @@ namespace Tests.NDesk.Options
         return c.Option != null ? base.Parse(option, c) : (!GetOptionParts(option, out var f, out var n, out var s, out var v) ? base.Parse(option, c) : base.Parse(f + n.ToLower() + (v != null && s != null ? s + v : ""), c));
       }
 
-      public new Option GetOptionForName(string n) => base.GetOptionForName(n);
+      public new Option GetOptionForName(string n) => base[n];
 
       public void CheckOptionParts(string option, bool er, string ef, string en, string es, string ev) {
         var r = GetOptionParts(option, out var f, out var n, out var s, out var v);

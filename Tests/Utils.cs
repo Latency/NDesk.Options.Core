@@ -9,7 +9,7 @@
 
 using System;
 
-namespace Tests.NDesk.Options {
+namespace Tests {
   internal static class Utils {
     public static void AssertException<T>(Type exception, string message, T a, Action<T> action) {
       Type actualType = null;

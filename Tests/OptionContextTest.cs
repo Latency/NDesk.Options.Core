@@ -11,7 +11,7 @@ using System;
 using NDesk.Options;
 using NUnit.Framework;
 
-namespace Tests.NDesk.Options {
+namespace Tests {
   [TestFixture]
   public class OptionContextTest {
     [Test]

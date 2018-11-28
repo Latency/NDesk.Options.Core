@@ -13,7 +13,7 @@ using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
 
-namespace Tests.NDesk.Options {
+namespace Tests {
   internal class DefaultOption : Option {
     public DefaultOption(string prototypes, string description) : base(prototypes, description) {
     }
