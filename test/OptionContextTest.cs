@@ -27,7 +27,7 @@ namespace Tests {
         var ignore = v.OptionValues[0];
       });
       c.Option = p[0];
-      Utils.AssertException(typeof(ArgumentOutOfRangeException), "Argument is out of range.\nParameter name: index", c, v => {
+      Utils.AssertException(typeof(ArgumentOutOfRangeException), "Specified argument was out of the range of valid values.\r\nParameter name: index", c, v => {
         var ignore = v.OptionValues[2];
       });
       c.OptionName = "-a";
