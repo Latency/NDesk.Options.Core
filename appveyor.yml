@@ -1,0 +1,14 @@
+version: '{build}'
+configuration:
+  - Debug
+  - Release
+build_script:
+  - echo "Building for %CONFIGURATION%"
+  - cmd: .\build.sh %CONFIGURATION%
+artifacts:
+  - path: .\artifacts\*.nupkg
+    name: NuGet
+test_script:
+  - cmd: .\test.sh
+cache:
+  - '%USERPROFILE%\.nuget\packages'

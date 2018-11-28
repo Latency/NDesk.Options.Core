@@ -7,9 +7,9 @@
     <Company>Bio-Hazard Industries</Company>
     <Description>A callback-based program option parser for C#.</Description>
     <Copyright>Copyright ©  1998-2019</Copyright>
-    <PackageProjectUrl>http://latency.github.io/TINTIN-.NET/</PackageProjectUrl>
+    <PackageProjectUrl>https://latency.github.io/NDesk.Options/</PackageProjectUrl>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-    <PackageIconUrl>http://bio-hazard.us/ico/kitty.ico</PackageIconUrl>
+    <PackageIconUrl>https://bio-hazard.us/ico/kitty.ico</PackageIconUrl>
     <RepositoryUrl>https://github.com/Latency/NDesk.Options/</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>C# options parser</PackageTags>
@@ -17,7 +17,7 @@
     <PackageId>NDesk.Options</PackageId>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>snKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>snKey.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

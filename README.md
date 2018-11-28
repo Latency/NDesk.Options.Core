@@ -13,8 +13,8 @@
 | SUPPORTS:    | [Visual Studio] 2017, 2015, 2013, 2012, 2010, 2008 |
 | TAGS:        | [.NET], [NuGet], [MyGet], [API], [C#], [Visual Studio] |
 | STATUS:      | [![ndesk-options MyGet Build Status](https://www.myget.org/BuildSource/Badge/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f)](https://www.myget.org/) |
-| LICENSE:     | [![License](https://img.shields.io/badge/NDesk.Options-License-yellowgreen.svg?style=plastic)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE.txt) |
-| VERSION:     | [![Download](https://badge.fury.io/gh/Latency%2FNDesk.Options.svg)](https://www.myget.org/F/ndesk-options/api/v3/index.json) |
+| LICENSE:     | [![License](https://img.shields.io/badge/NDesk.Options-License-yellowgreen.svg?style=plastic)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE) |
+| VERSION:     | [![Download](https://badge.fury.io/gh/Latency%2FNDesk.Options.svg)](https://www.myget.org/F/ndesk-options/api/v2/package/NDesk.Options/0.2.4) |
 
 <hr>
 
@@ -66,7 +66,7 @@ OptionSet p = new OptionSet ()
 
 <h2><a name="installation">Installation</a></h2>
 
-This library can be installed using NuGet found [here](https://www.nuget.org/packages/AssemblyLoader/).
+This library can be installed using NuGet found [here](https://www.myget.org/feed/Packages/ndesk-options).
 
 <h2><a name="license">License</a></h2>
 
