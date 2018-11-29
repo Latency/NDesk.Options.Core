@@ -342,13 +342,17 @@ namespace Tests
 
       Assert.AreEqual(p.GetOptionForName("h"), p[0]);
       Assert.AreEqual(p.GetOptionForName("help"), p[0]);
-      Assert.AreEqual(p.GetOptionForName("invalid"), null);
+
+      Utils.AssertException(typeof(KeyNotFoundException), "The given key was not present in the dictionary.", p, v => {
+        p.GetOptionForName("invalid");
+      });
 
       Utils.AssertException(typeof(ArgumentException), "prototypes must be null!", p, v => {
         v.Add("N|NUM=", (int n) => {
         });
       });
-      Utils.AssertException(typeof(ArgumentNullException), "Argument cannot be null.\nParameter name: option", p, v => {
+
+      Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: key", p, v => {
         v.GetOptionForName(null);
       });
     }
@@ -387,7 +391,7 @@ namespace Tests
         v.Parse(_("-a", "-b"));
       });
       Assert.AreEqual(a, "-b");
-      Utils.AssertException(typeof(ArgumentNullException), "Argument cannot be null.\nParameter name: option", p, v => {
+      Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: item", p, v => {
         v.Add(null);
       });
 
@@ -404,10 +408,10 @@ namespace Tests
         v.Parse(_("-cz", "extra"));
       });
 
-      Utils.AssertException(typeof(ArgumentNullException), "Argument cannot be null.\nParameter name: action", p, v => {
+      Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: action", p, v => {
         v.Add("foo", (Action<string>) null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Cannot provide maxValueCount of 2 for OptionValueType.None.\nParameter name: maxValueCount", p, v => {
+      Utils.AssertException(typeof(ArgumentException), "Cannot provide maxValueCount of 2 for OptionValueType.None.\r\nParameter name: maxValueCount", p, v => {
         v.Add("foo", (k, val) => { /* ignore */
         });
       });

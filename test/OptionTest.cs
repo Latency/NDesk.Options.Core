@@ -30,61 +30,61 @@ namespace Tests {
   public class OptionTest {
     [Test]
     public void Exceptions() {
-      Utils.AssertException(typeof(ArgumentNullException), "Argument cannot be null.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: prototype", (object) null, v => {
         new DefaultOption(null, null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Cannot be the empty string.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Cannot be the empty string.\r\nParameter name: prototype", (object) null, v => {
         new DefaultOption("", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Empty option names are not supported.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Empty option names are not supported.", (object) null, v => {
         new DefaultOption("a|b||c=", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Conflicting option types: '=' vs. ':'.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Conflicting option types: '=' vs. ':'.", (object) null, v => {
         new DefaultOption("a=|b:", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "The default option handler '<>' cannot require values.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "The default option handler '<>' cannot require values.\r\nParameter name: prototype", (object) null, v => {
         new DefaultOption("<>=", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "The default option handler '<>' cannot require values.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "The default option handler '<>' cannot require values.\r\nParameter name: prototype", (object) null, v => {
         new DefaultOption("<>:", null);
       });
       Utils.AssertException(null, null, (object) null, v => {
         new DefaultOption("t|<>=", null, 1);
       });
-      Utils.AssertException(typeof(ArgumentException), "The default option handler '<>' cannot require values.\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "The default option handler '<>' cannot require values.\r\nParameter name: prototype", (object) null, v => {
         new DefaultOption("t|<>=", null, 2);
       });
       Utils.AssertException(null, null, (object) null, v => {
         new DefaultOption("a|b=", null, 2);
       });
-      Utils.AssertException(typeof(ArgumentOutOfRangeException), "Argument is out of range.\nParameter name: maxValueCount", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentOutOfRangeException), "Specified argument was out of the range of valid values.\r\nParameter name: maxValueCount", (object) null, v => {
         new DefaultOption("a", null, -1);
       });
-      Utils.AssertException(typeof(ArgumentException), "Cannot provide maxValueCount of 0 for OptionValueType.Required or " + "OptionValueType.Optional.\nParameter name: maxValueCount", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Cannot provide maxValueCount of 0 for OptionValueType.Required or OptionValueType.Optional.\r\nParameter name: maxValueCount", (object) null, v => {
         new DefaultOption("a=", null, 0);
       });
-      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={\".\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={\".\r\nParameter name: name", (object) null, v => {
         new DefaultOption("a={", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a=}\".\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a=}\".\r\nParameter name: name", (object) null, v => {
         new DefaultOption("a=}", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={{}}\".\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={{}}\".\r\nParameter name: name", (object) null, v => {
         new DefaultOption("a={{}}", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={}}\".\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={}}\".\r\nParameter name: name", (object) null, v => {
         new DefaultOption("a={}}", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={}{\".\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Ill-formed name/value separator found in \"a={}{\".\r\nParameter name: name", (object) null, v => {
         new DefaultOption("a={}{", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Cannot provide key/value separators for Options taking 1 value(s).\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Cannot provide key/value separators for Options taking 1 value(s).", (object) null, v => {
         new DefaultOption("a==", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Cannot provide key/value separators for Options taking 1 value(s).\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Cannot provide key/value separators for Options taking 1 value(s).", (object) null, v => {
         new DefaultOption("a={}", null);
       });
-      Utils.AssertException(typeof(ArgumentException), "Cannot provide key/value separators for Options taking 1 value(s).\nParameter name: prototype", (object) null, v => {
+      Utils.AssertException(typeof(ArgumentException), "Cannot provide key/value separators for Options taking 1 value(s).", (object) null, v => {
         new DefaultOption("a=+-*/", null);
       });
       Utils.AssertException(null, null, (object) null, v => {
