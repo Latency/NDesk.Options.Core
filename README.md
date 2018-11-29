@@ -13,7 +13,7 @@
 | SUPPORTS:    | [Visual Studio] 2017, 2015, 2013, 2012, 2010, 2008 |
 | TAGS:        | [.NET], [NuGet], [MyGet], [API], [C#], [Visual Studio] |
 | STATUS:      | [![Build status](https://ci.appveyor.com/api/projects/status/7v7qid5n8l9ca277/branch/master?svg=true)](https://ci.appveyor.com/project/Latency/ndesk-options/branch/master)[![ndesk-options MyGet Build Status](https://www.myget.org/BuildSource/Badge/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f)](https://www.myget.org/) |
-| LICENSE:     | [![License](https://img.shields.io/badge/NDesk.Options-License-yellowgreen.svg?style=plastic)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE) |
+| LICENSE:     | [![License](https://img.shields.io/badge/MIT-License-yellowgreen.svg)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE) |
 | VERSION:     | [![GitHub release](https://img.shields.io/github/release/Latency/NDesk.Options.svg)](https://github.com/Latency/NDesk.Options/releases) |
 
 <hr>
