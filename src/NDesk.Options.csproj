@@ -14,7 +14,7 @@
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>C# options parser</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
-    <PackageId>NDesk.Options</PackageId>
+    <PackageId>NDesk.Options2</PackageId>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>snKey.snk</AssemblyOriginatorKeyFile>
