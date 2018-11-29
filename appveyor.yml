@@ -1,9 +1,20 @@
-version: '0.2.4.{build}'
+version: 0.2.4.{build}
 image: Visual Studio 2017
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 before_build:
 - cmd: >-
     nuget update -self
     
-    nuget restore
+    nuget restore  
 build:
   verbosity: minimal
+deploy:
+- provider: Webhook
+  url: https://www.myget.org/BuildSource/Hook/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f
