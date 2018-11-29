@@ -11,10 +11,14 @@ dotnet_csproj:
 before_build:
 - cmd: >-
     nuget update -self
-    
-    nuget restore  
+
+    nuget restore
 build:
   verbosity: minimal
 deploy:
 - provider: Webhook
   url: https://www.myget.org/BuildSource/Hook/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f
+- provider: GitHub
+  auth_token:
+    secure: maIlkOjJtr1cNkB5Y7yaPCGerMiMnShkMrR8Lw24RezKAdZ7ndolmPvSQFnVrYVo
+  force_update: true
