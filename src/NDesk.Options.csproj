@@ -27,8 +27,4 @@
     <FileVersion>1.2.4.0</FileVersion>
   </PropertyGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="powershell -executionPolicy bypass -command &quot;&amp; '$(SolutionDir)tools\PreBuild.ps1' -solution '$(ProjectDir)..\' -project '$(ProjectDir)' -targetDir '$(TargetDir)' -targetFile '$(TargetFileName)'&quot;" />
-  </Target>
-
 </Project>
