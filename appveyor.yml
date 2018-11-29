@@ -1,24 +1,21 @@
-version: 0.2.4.{build}
+version: 1.2.4.{build}
+skip_tags: true
 image: Visual Studio 2017
-dotnet_csproj:
-  patch: true
-  file: '**\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
-  assembly_version: '{version}'
-  file_version: '{version}'
-  informational_version: '{version}'
 before_build:
 - cmd: >-
     nuget update -self
 
     nuget restore
 build:
+  parallel: true
   verbosity: minimal
+artifacts:
+- path: .\artifacts\*.nupkg
+  name: NDesk.Options
 deploy:
-- provider: Webhook
-  url: https://www.myget.org/BuildSource/Hook/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f
 - provider: GitHub
   auth_token:
     secure: maIlkOjJtr1cNkB5Y7yaPCGerMiMnShkMrR8Lw24RezKAdZ7ndolmPvSQFnVrYVo
   force_update: true
+- provider: Webhook
+  url: https://www.myget.org/BuildSource/Hook/ndesk-options?identifier=18fa8769-160d-477d-9185-a052bac31b9f
