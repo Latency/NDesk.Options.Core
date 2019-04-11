@@ -1,30 +1,38 @@
-<Project ToolsVersion="15.0" Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net472;netcoreapp2.1;netstandard2.0</TargetFrameworks>
+    <OutputType>Library</OutputType>
+    <TargetFrameworks>netcoreapp2.2;netcoreapp3.0;netstandard2.0;net45;net461;net472;net48</TargetFrameworks>
     <Version>1.2.4</Version>
     <Authors>Latency McLaughlin</Authors>
     <Company>Bio-Hazard Industries</Company>
     <Description>A callback-based program option parser for C#.</Description>
     <Copyright>Copyright ©  1998-2019</Copyright>
     <PackageProjectUrl>https://latency.github.io/NDesk.Options/</PackageProjectUrl>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <PackageIconUrl>https://bio-hazard.us/ico/kitty.ico</PackageIconUrl>
     <RepositoryUrl>https://github.com/Latency/NDesk.Options/</RepositoryUrl>
     <RepositoryType>GIT</RepositoryType>
     <PackageTags>C# options parser</PackageTags>
-    <NeutralLanguage>en-US</NeutralLanguage>
     <PackageId>NDesk.Options.Core</PackageId>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>snKey.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>false</DelaySign>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <PackageReleaseNotes>Update target framework to 4.7.2 and Core 2.1.</PackageReleaseNotes>
-    <ApplicationIcon></ApplicationIcon>
-    <AssemblyVersion>1.2.4.0</AssemblyVersion>
-    <FileVersion>1.2.4.0</FileVersion>
+    <PackageReleaseNotes>Update target framework to include .NET 4.8 and Core 3.0.</PackageReleaseNotes>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <ArtifactsDirName>Artifacts</ArtifactsDirName>
   </PropertyGroup>
+
+  <!-- @@ -->
+  <Target Name="CreateArtifactsDirectoryIfNotExists" Condition="!Exists('$(MSBuildProjectDirectory)\..\$(ArtifactsDirName)')">
+    <Message Text="Creating artifacts directory -&gt; '$(MSBuildProjectDirectory)\..\$(ArtifactsDirName)\'" Importance="high" />
+    <MakeDir Directories="$(MSBuildProjectDirectory)\..\$(ArtifactsDirName)" />
+  </Target>
+
+  <Target Name="PostPublish" AfterTargets="Pack" Condition=" '$(GeneratePackageOnBuild)' == 'true' ">
+    <CallTarget Targets="CreateArtifactsDirectoryIfNotExists" />
+    <Message Text="Copying artifact `.\bin\$(Configuration)\$(PackageId).$(PackageVersion).nupkg' to directory `$(MSBuildProjectDirectory)\..\$(ArtifactsDirName)\'" Importance="high" />
+    <Copy SourceFiles=".\bin\$(Configuration)\$(PackageId).$(PackageVersion).nupkg" DestinationFolder="$(MSBuildProjectDirectory)\..\$(ArtifactsDirName)" />
+  </Target>
 
 </Project>
