@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFrameworks>netcoreapp2.2;netcoreapp3.0;netstandard2.0;net45;net461;net472;net48</TargetFrameworks>
-    <Version>1.2.4</Version>
+    <Version>1.2.5</Version>
     <Authors>Latency McLaughlin</Authors>
     <Company>Bio-Hazard Industries</Company>
     <Description>A callback-based program option parser for C#.</Description>
