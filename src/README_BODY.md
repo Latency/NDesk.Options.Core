@@ -1,28 +1,3 @@
-﻿# NDesk.Options
-### A callback-based program option parser for C#.
-
-
----
-
-
-|              |   Description                                                  |
-|--------------|----------------------------------------------------------------|
-| CREATED BY:  | Latency McLaughlin                                                     |
-| COMPANY:     | Bio-Hazard Industries                                                     |
-| UPDATED:     | 1/26/2024                          |
-| FRAMEWORK:   |  ([Latest])                                |
-| LANGUAGE:    | [C#] preview                                            |
-| OUTPUT TYPE: | Library [API]                                            |
-| SUPPORTS:    | [Visual Studio]                                                |
-| GFX SUBSYS:  | [None]                                                     |
-| TAGS:        | [C#], [.NET], [API], [Visual Studio], [MyGet], [NuGet], [NDesk.Options]                                                |
-| STATUS:      | [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/7v7qid5n8l9ca277/branch/master?svg=true)](https://ci.appveyor.com/project/Latency/ndesk-options)                                                    |
-|              | [![MyGet Build Status](https://www.myget.org/BuildSource/Badge/NDesk.Options?identifier=8e359284-c64e-4aeb-b7c2-2122f6ad6347)](https://www.myget.org/)                                                    |
-|              | [![.NET](https://github.com/Latency/NDesk.Options/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Latency/NDesk.Options/actions/workflows/dotnet.yml)                                                    |
-| LICENSE:     | [![License](https://img.shields.io/badge/MIT-License-yellowgreen.svg)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE)                                                    |
-| VERSION:     | [![GitHub release](https://img.shields.io/github/release/Latency/NDesk.Options.svg)](https://github.com/Latency/NDesk.Options/releases) - v1.2.6                                                    |
-
-
 <hr>
 
 ## Navigation
