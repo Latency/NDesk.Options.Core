@@ -25,7 +25,7 @@ jobs:
       with:
         dotnet-version: '8.0.x'
         dotnet-quality: 'daily'
-        source-url: https://nuget.pkg.github.com/${{ github.workspace }}/index.json
+        source-url: https://nuget.pkg.github.com/${{ github.account.owner }}/index.json
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
