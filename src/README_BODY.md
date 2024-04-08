@@ -52,7 +52,11 @@ This library can be installed using NuGet found [here](https://www.myget.org/fee
 
 <h2><a name="license">License</a></h2>
 
-[MIT LICENSE]
+The source code for the site is licensed under the MIT license, which you can find in
+the [MIT-LICENSE].txt file.
+
+All graphical assets are licensed under the
+[Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job.)
 
@@ -62,7 +66,7 @@ This library can be installed using NuGet found [here](https://www.myget.org/fee
    [C#]: <https://en.wikipedia.org/wiki/C_Sharp_(programming_language)>
    [DLL]: <https://en.wikipedia.org/wiki/Dynamic-link_library>
    [Latency McLaughlin]: <https://www.linkedin.com/in/Latency/>
-   [MIT License]: <http://choosealicense.com/licenses/mit/>
-   [MyGet]: <https://www.myget.org/features>
+   [MIT-License]: <http://choosealicense.com/licenses/mit/>
    [NuGet]: <https://www.nuget.org/>
+   [NDesk.Options.Core]: <https://github.com/Latency/NDesk.Options.Core/>
    [Visual Studio]: <https://en.wikipedia.org/wiki/Microsoft_Visual_Studio/>

@@ -1,45 +1,18 @@
-// 1****************************************************************************
-// Project:  Tests
+// 04****************************************************************************
+// Project:  Unit Tests
 // File:     OptionSetTest.cs
 // Author:   Latency McLaughlin
-// Date:     1/26/2024
+// Date:     04/04/2024
 // ****************************************************************************
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using System.IO;
 using NDesk.Options;
 using Xunit;
 
-namespace Tests;
-
-internal class FooConverter : TypeConverter
-{
-    public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType) => sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
-
-    public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value) => value is not string v
-                                                                                                                 ? base.ConvertFrom(context, culture, value)
-                                                                                                                 : v switch
-                                                                                                                 {
-                                                                                                                     "A" => Foo.A,
-                                                                                                                     "B" => Foo.B,
-                                                                                                                     _   => base.ConvertFrom(context, culture, value)
-                                                                                                                 };
-}
-
-[TypeConverter(typeof(FooConverter))]
-internal class Foo
-{
-    public static readonly Foo    A = new("A");
-    public static readonly Foo    B = new("B");
-    private readonly       string _s;
-
-    private Foo(string s) => _s = s;
-
-    public override string ToString() => _s;
-}
+namespace Unit_Tests;
 
 public class OptionSetTest
 {
@@ -68,9 +41,7 @@ public class OptionSetTest
         var a = false;
         var p = new OptionSet
         {
-            {
-                "a", v => a = v != null
-            }
+            { "a", v => a = v != null }
         };
         p.Parse(_("-a"));
         Assert.True(a);
@@ -98,9 +69,7 @@ public class OptionSetTest
                 "Debug", v => debug = v != null
             },
             {
-                "E", v =>
-                { /* ignore */
-                }
+                "E", v => { /* ignore */ }
             }
         };
         p.Parse(_("-DNAME", "-D", "NAME2", "-Debug", "-L/foo", "-L", "/bar", "-EDNAME3"));
@@ -173,8 +142,8 @@ public class OptionSetTest
                 }
             }
         };
-        var e = p.Parse(new[]
-            {
+        var e = p.Parse(
+            [
                 "foo",
                 "-v",
                 "-a=42",
@@ -188,7 +157,7 @@ public class OptionSetTest
                 "-?",
                 "--help",
                 "-v"
-            }
+            ]
         );
 
         Assert.Equal(2,     e.Count);
@@ -198,9 +167,9 @@ public class OptionSetTest
         Assert.Equal("64",  av);
         Assert.Equal(2,     b);
         Assert.Null(bv);
-        Assert.Equal(2,     verbose);
-        Assert.Equal(0x7,   help);
-        Assert.Equal(f,     Foo.B);
+        Assert.Equal(2,   verbose);
+        Assert.Equal(0x7, help);
+        Assert.Equal(f,   Foo.B);
     }
 
     [Fact]
@@ -211,11 +180,11 @@ public class OptionSetTest
         var p = new OptionSet
         {
             new CustomOption("a==:", null, 2, v => a.Add(v[0], v[1])),
-            new CustomOption("b==:", null, 3, v => b.Add(v[0], new[]
-                                 {
+            new CustomOption("b==:", null, 3, v => b.Add(v[0],
+                                 [
                                      v[1],
                                      v[2]
-                                 }
+                                 ]
                              )
             )
         };
@@ -280,7 +249,7 @@ public class OptionSetTest
                 {
                     if (!formats.TryGetValue(format, out var f))
                     {
-                        f = new();
+                        f = [];
                         formats.Add(format, f);
                     }
 
@@ -321,7 +290,7 @@ public class OptionSetTest
         Assert.Equal(p.GetOptionForName("h"),    p[0]);
         Assert.Equal(p.GetOptionForName("help"), p[0]);
 
-        Utils.AssertException(typeof(KeyNotFoundException), "The given key was not present in the dictionary.", p, v =>
+        Utils.AssertException(typeof(KeyNotFoundException), "The given key 'invalid' was not present in the dictionary.", p, v =>
             {
                 p.GetOptionForName("invalid");
             }
@@ -335,7 +304,7 @@ public class OptionSetTest
             }
         );
 
-        Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: key", p, v =>
+        Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null. (Parameter 'key')", p, v =>
             {
                 v.GetOptionForName(null);
             }
@@ -348,84 +317,33 @@ public class OptionSetTest
         string a = null;
         var p = new OptionSet
         {
-            {
-                "a=", v => a = v
-            },
-            {
-                "b", v =>
-                { }
-            },
-            {
-                "c", v =>
-                { }
-            },
-            {
-                "n=", (int v) =>
-                { }
-            },
-            {
-                "f=", (Foo v) =>
-                { }
-            }
+            { "a=", v => a = v },
+            { "b", v => { } },
+            { "c", v => { } },
+            { "n=", (int v) => { } },
+            { "f=", (Foo v) => { } }
         };
+
         // missing argument
-        Utils.AssertException(typeof(OptionException), "Missing required value for option '-a'.", p, v =>
-            {
-                v.Parse(_("-a"));
-            }
-        );
+        Utils.AssertException(typeof(OptionException), "Missing required value for option '-a'.", p, v => { v.Parse(_("-a")); });
+
         // another named option while expecting one -- follow Getopt::Long
-        Utils.AssertException(null, null, p, v =>
-            {
-                v.Parse(_("-a", "-a"));
-            }
-        );
+        Utils.AssertException(null, null, p, v => { v.Parse(_("-a", "-a")); });
         Assert.Equal("-a", a);
+
         // no exception when an unregistered named option follows.
-        Utils.AssertException(null, null, p, v =>
-            {
-                v.Parse(_("-a", "-b"));
-            }
-        );
+        Utils.AssertException(null, null, p, v => { v.Parse(_("-a", "-b")); });
         Assert.Equal("-b", a);
-        Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: item", p, v =>
-            {
-                v.Add(null);
-            }
-        );
+        Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null. (Parameter 'item')", p, v => { v.Add(null); });
 
         // bad type
-        Utils.AssertException(typeof(OptionException), "Could not convert string `value' to type Int32 for option `-n'.", p, v =>
-            {
-                v.Parse(_("-n", "value"));
-            }
-        );
-        Utils.AssertException(typeof(OptionException), "Could not convert string `invalid' to type Foo for option `--f'.", p, v =>
-            {
-                v.Parse(_("--f", "invalid"));
-            }
-        );
+        Utils.AssertException(typeof(OptionException), "Could not convert string `value' to type Int32 for option `-n'.", p, v => { v.Parse(_("-n", "value")); });
+        Utils.AssertException(typeof(OptionException), "Could not convert string `invalid' to type Foo for option `--f'.", p, v => { v.Parse(_("--f", "invalid")); });
 
         // try to bundle with an option requiring a value
-        Utils.AssertException(typeof(OptionException), "Cannot bundle unregistered option '-z'.", p, v =>
-            {
-                v.Parse(_("-cz", "extra"));
-            }
-        );
-
-        Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null.\r\nParameter name: action", p, v =>
-            {
-                v.Add("foo", (Action<string>)null);
-            }
-        );
-        Utils.AssertException(typeof(ArgumentException), "Cannot provide maxValueCount of 2 for OptionValueType.None.\r\nParameter name: maxValueCount", p, v =>
-            {
-                v.Add("foo", (k, val) =>
-                    { /* ignore */
-                    }
-                );
-            }
-        );
+        Utils.AssertException(typeof(OptionException),       "Cannot bundle unregistered option '-z'.",                                                 p, v => { v.Parse(_("-cz", "extra")); });
+        Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null. (Parameter 'action')",                                              p, v => { v.Add("foo", (Action<string>)null); });
+        Utils.AssertException(typeof(ArgumentException),     "Cannot provide maxValueCount of 2 for OptionValueType.None. (Parameter 'maxValueCount')", p, v => { v.Add("foo", (k, val) => { /* ignore */ }); });
     }
 
     [Fact]
@@ -698,48 +616,44 @@ public class OptionSetTest
         var p = new OptionSet
         {
             {
-                "p|indicator-style=", "append / indicator to directories", v =>
-                { }
+                "p|indicator-style=", "append / indicator to directories", v => { }
             },
             {
-                "color:", "controls color info", v =>
-                { }
+                "color:", "controls color info", v => { }
             },
             {
-                "color2:", "set {color}", v =>
-                { }
+                "color2:", "set {color}", v => { }
             },
             {
-                "rk=", "required key/value option", (k, v) =>
-                { }
+                "rk=", "required key/value option", (k, v) => { }
             },
             {
-                "rk2=", "required {{foo}} {0:key}/{1:value} option", (k, v) =>
-                { }
+                "rk2=", "required {{foo}} {0:key}/{1:value} option", (k, v) => { }
             },
             {
-                "ok:", "optional key/value option", (k, v) =>
-                { }
+                "ok:", "optional key/value option", (k, v) => { }
             },
             {
-                "long-desc", "This has a really\nlong, multi-line description that also\ntests\n" + "the-builtin-supercalifragilisticexpialidicious-break-on-hyphen.  " + "Also, a list:\n" + "  item 1\n" + "  item 2", v =>
-                { }
+                "long-desc",
+
+                                "This has a really\nlong, multi-line description that also\ntests\n" +
+                                "the-builtin-supercalifragilisticexpialidicious-break-on-hyphen.  "  + 
+                                "Also, a list:\n"                                                    +
+                                "  item 1\n"                                                         +
+                                "  item 2",
+                                v => { }
             },
             {
-                "long-desc2", "IWantThisDescriptionToBreakInsideAWordGeneratingAutoWordHyphenation.", v =>
-                { }
+                "long-desc2", "IWantThisDescriptionToBreakInsideAWordGeneratingAutoWordHyphenation.", v => { }
             },
             {
-                "h|?|help", "show help text", v =>
-                { }
+                "h|?|help", "show help text", v => { }
             },
             {
-                "version", "output version information and exit", v =>
-                { }
+                "version", "output version information and exit", v => { }
             },
             {
-                "<>", v =>
-                { }
+                "<>", v => { }
             }
         };
 
@@ -785,7 +699,7 @@ public class OptionSetTest
 
         protected override bool Parse(string option, OptionContext c) => c.Option != null ? base.Parse(option, c) : !GetOptionParts(option, out var f, out var n, out var s, out var v) ? base.Parse(option, c) : base.Parse(f + n.ToLower() + (v != null && s != null ? s + v : ""), c);
 
-        public new Option GetOptionForName(string n) => base[n];
+        public Option GetOptionForName(string n) => base[n];
 
         public void CheckOptionParts(string option, bool er, string ef, string en, string es, string ev)
         {

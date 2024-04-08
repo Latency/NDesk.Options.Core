@@ -1,55 +1,56 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET Core Desktop
+name: .NET Core Desktop Build
+env:
+  NUGET_SERVER_URL: "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+  NUGET_CONFIG: "../NuGet.config"
+  GH_TOKEN: ${{ secrets.LATENCY_PAT }}
 
 on:
   push:
-    branches: [ "master" ]
+    branches: master
+
   pull_request:
-    branches: [ "master" ]
- 
-jobs:
+
+  workflow_dispatch:
+  
+jobs:        
   build:
+    if: ${{ startsWith(github.ref, 'refs/tags/') == false }}
+    runs-on: ${{ matrix.os }}
+
     strategy:
-      matrix:
-        configuration: [Release]
-
-    runs-on: windows-latest
-
+        matrix:
+            os: [self-hosted] #, ubuntu-latest, windows-latest]
+            BuildConfiguration: [ Release ]
+        max-parallel: 2
+        
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4
+
+    - name: Copy NuGet.Config Template
+      shell: bash
+      run: |
+        cp ../NuGet.Config.template ../NuGet.Config
+
+    - name: Update NuGet Config
+      shell: bash
+      run: |
+        nuget config -Set defaultPushSource="${{ env.NUGET_SERVER_URL }}" -ConfigFile ${{ env.NUGET_CONFIG }}
+        dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.NUGET_AUTH_TOKEN }} --protocol-version 3 --configfile ${{ env.NUGET_CONFIG }} --store-password-in-clear-text --name github "${{ env.NUGET_SERVER_URL }}"
+       
+    - uses: actions/checkout@v4.1.1
+             
+    - uses: actions/setup-dotnet@v4.0.0
+      if: matrix.os != 'self-hosted'
       with:
         dotnet-version: '8.0.x'
-        dotnet-quality: 'daily'
-        source-url: https://nuget.pkg.github.com/${{ github.actor }}/index.json
+        dotnet-quality: 'signed'
+        source-url: ${{ env.NUGET_SERVER_URL }}
       env:
-        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v1.1
-      with:
-        vs-prerelease: true
-        msbuild-architecture: x64
-    
+        NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
+        
     - name: Restore dependencies
       run: dotnet restore
-      
-    - name: Build
-      run: dotnet build --no-restore --configuration ${{ matrix.configuration }}
         
-      - name: Create a release draft for a version tag
-        id: create-release-draft
-        uses: ecampidoglio/auto-release-draft@v1
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Print the URL of the release draft
-        if: steps.create-release-draft.outputs.release-url != ''
-        run: echo ${{ steps.create-release-draft.outputs.release-url }} 
-      
-    # - name: Push
-    #  run: dotnet nuget push "${{ github.workspace }}\src\bin\${{ matrix.configuration }}\NDesk.Options*.nupkg"
+    - name: Build
+      id: build
+      run: |
+        dotnet build --no-restore --configuration ${{ matrix.BuildConfiguration }}

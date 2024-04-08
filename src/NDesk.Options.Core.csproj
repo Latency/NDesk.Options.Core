@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFrameworks>net452;netstandard2.0;netstandard2.1</TargetFrameworks>
+		<Version>1.2.7</Version>
+		<Description>A callback-based program option parser for C#.</Description>
+		<PackageProjectUrl>https://latency.github.io/NDesk.Options/</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Latency/NDesk.Options/</RepositoryUrl>
+		<PackageTags>NDesk.Options C#</PackageTags>
+		<PackageId>NDesk.Options.Core</PackageId>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageReleaseNotes>Update target framework to include .NET 9.0.</PackageReleaseNotes>
+		<RepositoryLicenseUrl>$(GitHubRepository)/$(MSBuildProjectName)/blob/master/MIT-LICENSE.txt</RepositoryLicenseUrl>
+		<RepositoryReleasesUrl>$(GitHubRepository)/$(MSBuildProjectName)/releases</RepositoryReleasesUrl>
+	</PropertyGroup>
+
+</Project>

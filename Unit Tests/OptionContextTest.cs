@@ -1,15 +1,15 @@
-// 1****************************************************************************
-// Project:  Tests
+// 04****************************************************************************
+// Project:  Unit Tests
 // File:     OptionContextTest.cs
 // Author:   Latency McLaughlin
-// Date:     1/26/2024
+// Date:     04/04/2024
 // ****************************************************************************
 
 using System;
 using NDesk.Options;
 using Xunit;
 
-namespace Tests;
+namespace Unit_Tests;
 
 public class OptionContextTest
 {
@@ -19,9 +19,7 @@ public class OptionContextTest
         var p = new OptionSet
         {
             {
-                "a=", v =>
-                { /* ignore */
-                }
+                "a=", v => { /* ignore */ }
             }
         };
         var c = new OptionContext(p);
@@ -31,7 +29,7 @@ public class OptionContextTest
             }
         );
         c.Option = p[0];
-        Utils.AssertException(typeof(ArgumentOutOfRangeException), "Specified argument was out of the range of valid values.\r\nParameter name: index", c, v =>
+        Utils.AssertException(typeof(ArgumentOutOfRangeException), "Specified argument was out of the range of valid values. (Parameter 'index')", c, v =>
             {
                 var ignore = v.OptionValues[2];
             }

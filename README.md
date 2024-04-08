@@ -1,4 +1,4 @@
-﻿# NDesk.Options
+﻿# NDesk.Options.Core
 ### A callback-based program option parser for C#.
 
 
@@ -8,19 +8,16 @@
 |              |   Description                                                  |
 |--------------|----------------------------------------------------------------|
 | CREATED BY:  | Latency McLaughlin                                                     |
-| COMPANY:     | Bio-Hazard Industries                                                     |
-| UPDATED:     | 1/26/2024                          |
-| FRAMEWORK:   |  ([Latest])                                |
+| UPDATED:     | 4/8/2024                          |
+| FRAMEWORK:   | [net452], [netstandard2.0], [netstandard2.1] ([Latest])                                |
 | LANGUAGE:    | [C#] preview                                            |
 | OUTPUT TYPE: | Library [API]                                            |
 | SUPPORTS:    | [Visual Studio]                                                |
 | GFX SUBSYS:  | [None]                                                     |
-| TAGS:        | [C#], [.NET], [API], [Visual Studio], [MyGet], [NuGet], [NDesk.Options]                                                |
-| STATUS:      | [![Appveyor Build status](https://ci.appveyor.com/api/projects/status/7v7qid5n8l9ca277/branch/master?svg=true)](https://ci.appveyor.com/project/Latency/ndesk-options)                                                    |
-|              | [![MyGet Build Status](https://www.myget.org/BuildSource/Badge/NDesk.Options?identifier=8e359284-c64e-4aeb-b7c2-2122f6ad6347)](https://www.myget.org/)                                                    |
-|              | [![.NET](https://github.com/Latency/NDesk.Options/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Latency/NDesk.Options/actions/workflows/dotnet.yml)                                                    |
-| LICENSE:     | [![License](https://img.shields.io/badge/MIT-License-yellowgreen.svg)](https://github.com/Latency/NDesk.Options/blob/master/LICENSE)                                                    |
-| VERSION:     | [![GitHub release](https://img.shields.io/github/release/Latency/NDesk.Options.svg)](https://github.com/Latency/NDesk.Options/releases) - v1.2.6                                                    |
+| TAGS:        | [NDesk.Options C#]                                                |
+| STATUS       | [![.NET](https://github.com/Latency/NDesk.Options.Core/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Latency/NDesk.Options.Core/actions/workflows/dotnet.yml)                                                     |
+| LICENSE:     | [![License](https://img.shields.io/badge/MIT-License-yellowgreen.svg)](https://github.com/Latency/NDesk.Options.Core/blob/master/MIT-LICENSE.txt)                                                    |
+| VERSION:     | [![GitHub Release](https://img.shields.io/badge/Version-1.2.7-blue)](https://github.com/Latency/NDesk.Options.Core/releases)                                                    |
 
 
 <hr>
@@ -77,7 +74,11 @@ This library can be installed using NuGet found [here](https://www.myget.org/fee
 
 <h2><a name="license">License</a></h2>
 
-[MIT LICENSE]
+The source code for the site is licensed under the MIT license, which you can find in
+the [MIT-LICENSE].txt file.
+
+All graphical assets are licensed under the
+[Creative Commons Attribution 3.0 Unported License](https://creativecommons.org/licenses/by/3.0/).
 
 [//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job.)
 
@@ -87,7 +88,7 @@ This library can be installed using NuGet found [here](https://www.myget.org/fee
    [C#]: <https://en.wikipedia.org/wiki/C_Sharp_(programming_language)>
    [DLL]: <https://en.wikipedia.org/wiki/Dynamic-link_library>
    [Latency McLaughlin]: <https://www.linkedin.com/in/Latency/>
-   [MIT License]: <http://choosealicense.com/licenses/mit/>
-   [MyGet]: <https://www.myget.org/features>
+   [MIT-License]: <http://choosealicense.com/licenses/mit/>
    [NuGet]: <https://www.nuget.org/>
+   [NDesk.Options.Core]: <https://github.com/Latency/NDesk.Options.Core/>
    [Visual Studio]: <https://en.wikipedia.org/wiki/Microsoft_Visual_Studio/>

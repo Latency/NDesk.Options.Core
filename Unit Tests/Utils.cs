@@ -1,13 +1,13 @@
-// 1****************************************************************************
-// Project:  Tests
+// 04****************************************************************************
+// Project:  Unit Tests
 // File:     Utils.cs
 // Author:   Latency McLaughlin
-// Date:     1/26/2024
+// Date:     04/04/2024
 // ****************************************************************************
 
 using System;
 
-namespace Tests;
+namespace Unit_Tests;
 
 internal static class Utils
 {
@@ -28,9 +28,10 @@ internal static class Utils
                 stack = e.ToString();
         }
 
-        if (!(actualType == exception))
-            throw new InvalidOperationException($"Assertion failed: Expected Exception Type {exception}, got {actualType}.\n" + $"Actual Exception: {stack}");
+        if (actualType != exception)
+            throw new InvalidOperationException($"Assertion failed: Expected Exception Type {exception}, got {actualType}.{Environment.NewLine}Actual Exception: {stack}");
+
         if (actualMessage != message)
-            throw new InvalidOperationException($"Assertion failed:\n\tExpected: {message}\n\t  Actual: {actualMessage}");
+            throw new InvalidOperationException($"Assertion failed:{Environment.NewLine}\tExpected: {message}{Environment.NewLine}\t  Actual: {actualMessage}");
     }
 }
