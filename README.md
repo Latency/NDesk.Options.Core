@@ -17,7 +17,7 @@
 | TAGS:        | [NDesk.Options C#]                                                |
 | STATUS       | [![.NET](https://github.com/Latency/NDesk.Options.Core/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Latency/NDesk.Options.Core/actions/workflows/dotnet.yml)                                                     |
 | LICENSE:     | [![License](https://img.shields.io/badge/MIT-License-yellowgreen.svg)](https://github.com/Latency/NDesk.Options.Core/blob/master/MIT-LICENSE.txt)                                                    |
-| VERSION:     | [![GitHub Release](https://img.shields.io/badge/Version-1.2.7-blue)](https://github.com/Latency/NDesk.Options.Core/releases)                                                    |
+| VERSION:     | [![GitHub Release](https://img.shields.io/badge/Version-1.2.8-blue)](https://github.com/Latency/NDesk.Options.Core/releases)                                                    |
 
 
 <hr>
