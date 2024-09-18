@@ -86,7 +86,7 @@ jobs:
         fi                
         for filename in ${filenames[@]}; do
             if [ -f $filename -a "$filename" = "README.md" ]; then
-                desc=$(sed -n '2{P;q;}' $filename | sed 's/\n$//' | sed 's/\r$//' | cut -c 5- )
+                desc=$(sed -n '2{P;q;}' $filename | sed 's/\n$//' | sed 's/\r$//' )
                 echo "$desc"
                 echo "README_DESC=$desc" >> $GITHUB_ENV
                 
@@ -129,8 +129,7 @@ jobs:
       run: |
         draft=false
         prerelease=false
-        body="${{ env.README_DESC }}
-        ${{ steps.github_release.outputs.changelog }}"
+        body="${{ env.README_DESC }}"
         if [ "$draft" = "true" ]; then
           d='-d '
         fi

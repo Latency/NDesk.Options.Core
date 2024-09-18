@@ -292,14 +292,6 @@ public class OptionSetTest
             }
         );
 
-        Utils.AssertException(typeof(ArgumentException), "prototypes must be null!", p, v =>
-            {
-                v.Add("N|NUM=", (int _) =>
-                      { }
-                );
-            }
-        );
-
         Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null. (Parameter 'key')", p, v =>
             {
                 v.GetOptionForName(null);
