@@ -4,8 +4,8 @@
 // Author:   Latency McLaughlin
 // Date:     04/04/2024
 // ****************************************************************************
+// ReSharper disable CheckNamespace
 
-using System;
 using System.ComponentModel;
 using System.Globalization;
 

@@ -1,23 +1,61 @@
-﻿# NDesk.Options.Core
-### A callback-based program option parser for C#.
+﻿# NDesk.Options
+A callback-based program option parser for C#.
 
 
 ---
 
 
-|              |   Description                                                  |
-|--------------|----------------------------------------------------------------|
-| CREATED BY:  | Latency McLaughlin                                                     |
-| UPDATED:     | 4/8/2024                          |
-| FRAMEWORK:   | [net452], [netstandard2.0], [netstandard2.1] ([Latest])                                |
-| LANGUAGE:    | [C#] preview                                            |
-| OUTPUT TYPE: | Library [API]                                            |
-| SUPPORTS:    | [Visual Studio]                                                |
-| GFX SUBSYS:  | [None]                                                     |
-| TAGS:        | [NDesk.Options C#]                                                |
-| STATUS       | [![.NET](https://github.com/Latency/NDesk.Options.Core/actions/workflows/dotnet.yml/badge.svg)](https://github.com/Latency/NDesk.Options.Core/actions/workflows/dotnet.yml)                                                     |
-| LICENSE:     | [![License](https://img.shields.io/badge/MIT-License-yellowgreen.svg)](https://github.com/Latency/NDesk.Options.Core/blob/master/MIT-LICENSE.txt)                                                    |
-| VERSION:     | [![GitHub Release](https://img.shields.io/badge/Version-1.2.8-blue)](https://github.com/Latency/NDesk.Options.Core/releases)                                                    |
+<table>
+<tr>
+<th></th>
+<th>Description</th>
+</tr>
+<tr>
+<td>CREATED BY:</td>
+<td>[Latency McLaughlin]</td>
+</tr>
+<tr>
+<td>UPDATED:</td>
+<td>9/18/2024</td>
+</tr>
+<tr>
+<td>FRAMEWORK:</td>
+<td>net452, netstandard2.0, netstandard2.1, net9.0</td>
+</tr>
+<tr>
+<td>LANGUAGE:</td>
+<td>[C#] preview</td>
+</tr>
+<tr>
+<td>OUTPUT TYPE:</td>
+<td>Library [API]</td>
+</tr>
+<tr>
+<td>SUPPORTS:</td>
+<td>[Visual Studio]</td>
+</tr>
+<tr>
+<td>GFX SUBSYS:</td>
+<td>[None]</td>
+</tr>
+<tr>
+<td>TAGS:</td>
+<td>[NDesk.Options C#]</td>
+</tr>
+<tr>
+<td>STATUS:</td>
+<td><a href="https://github.com/Latency/NDesk.Options/actions/workflows/dotnet.yml"><img src="https://github.com/Latency/NDesk.Options/actions/workflows/dotnet.yml/badge.svg"></a></td>
+</tr>
+<tr>
+<td>LICENSE:</td>
+<td><a href="https://github.com/Latency/NDesk.Options/blob/master/MIT-LICENSE.txt"><img src="https://img.shields.io/github/license/Latency/NDesk.Options?style=plastic&logo=GitHub&logoColor=black&label=License&color=yellowgreen"></a></td>
+</tr>
+<tr>
+<td>VERSION:</td>
+<td><a href="https://github.com/Latency/NDesk.Options/releases"><img src="https://img.shields.io/github/v/release/Latency/NDesk.Options?include_prereleases&style=plastic&logo=GitHub&logoColor=black&label=Version&color=blue"></a></td>
+</tr>
+<!-- VERSION: 1.2.9 -->
+</table>
 
 
 <hr>

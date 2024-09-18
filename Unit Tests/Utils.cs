@@ -5,8 +5,6 @@
 // Date:     04/04/2024
 // ****************************************************************************
 
-using System;
-
 namespace Unit_Tests;
 
 internal static class Utils

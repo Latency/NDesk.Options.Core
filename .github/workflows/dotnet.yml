@@ -26,19 +26,19 @@ jobs:
     steps:
 
     - name: Copy NuGet.Config Template
-      shell: bash
       run: |
-        cp ../NuGet.Config.template ../NuGet.Config
+        copy ../NuGet.Config.template ../NuGet.Config
 
     - name: Update NuGet Config
-      shell: bash
       run: |
         nuget config -Set defaultPushSource="${{ env.NUGET_SERVER_URL }}" -ConfigFile ${{ env.NUGET_CONFIG }}
         dotnet nuget add source --username ${{ github.repository_owner }} --password ${{ secrets.NUGET_AUTH_TOKEN }} --protocol-version 3 --configfile ${{ env.NUGET_CONFIG }} --store-password-in-clear-text --name github "${{ env.NUGET_SERVER_URL }}"
        
     - uses: actions/checkout@v4.1.1
+      with:
+        fetch-depth: '0'
              
-    - uses: actions/setup-dotnet@v4.0.0
+    - uses: actions/setup-dotnet@v4.0.1
       if: matrix.os != 'self-hosted'
       with:
         dotnet-version: '8.0.x'

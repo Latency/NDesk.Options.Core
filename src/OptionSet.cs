@@ -5,10 +5,7 @@
 // Date:     04/04/2024
 // ****************************************************************************
 
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -436,7 +433,7 @@ public class OptionSet(Converter<string, string> localizer) : KeyedCollection<st
                     }
                     else
                     {
-                        #if NETSTANDARD2_1
+                        #if NETSTANDARD2_1 || NET9_0_OR_GREATER
                         sb.Append(description.AsSpan(start, i - start));
                         #else
                         sb.Append (description[start..i]);

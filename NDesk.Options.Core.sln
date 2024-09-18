@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
+# 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NDesk.Options.Core", "src\NDesk.Options.Core.csproj", "{39980B35-43F3-4F50-BA45-D72B165D0287}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NDesk.Options", "src\NDesk.Options.csproj", "{39980B35-43F3-4F50-BA45-D72B165D0287}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unit Tests", "Unit Tests\Unit Tests.csproj", "{8EDF4429-251A-416D-BB68-93F227191BCF}"
 	ProjectSection(ProjectDependencies) = postProject

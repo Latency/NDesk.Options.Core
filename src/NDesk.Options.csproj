@@ -1,13 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<OutputType>Library</OutputType>
-		<TargetFrameworks>net452;netstandard2.0;netstandard2.1</TargetFrameworks>
-		<Version>1.2.8</Version>
+		<TargetFrameworks>net452;netstandard2.0;netstandard2.1;net9.0</TargetFrameworks>
+		<Version>1.2.9</Version>
 		<Description>A callback-based program option parser for C#.</Description>
 		<PackageTags>NDesk.Options C#</PackageTags>
 		<PackageId>NDesk.Options.Core</PackageId>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageReleaseNotes>Update target framework to include .NET 9.0.</PackageReleaseNotes>
 	</PropertyGroup>
 

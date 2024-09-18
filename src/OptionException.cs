@@ -5,8 +5,6 @@
 // Date:     1/21/2024
 // ****************************************************************************
 
-using System;
-
 namespace NDesk.Options;
 
 [Serializable]

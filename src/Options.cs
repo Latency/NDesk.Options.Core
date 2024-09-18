@@ -95,9 +95,7 @@
 //      p.Parse (new string[]{"-a-"});  // sets v == null
 //
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace NDesk.Options;
 
@@ -165,7 +163,7 @@ public class OptionValueCollection : IList, IList<string>
 
     public string[] ToArray() => [.. _values];
 
-    public override string ToString() => string.Join(", ", [.. _values]);
+    public override string ToString() => string.Join(", ", (string[]) [.. _values]);
 
     private void AssertValid(int index)
     {

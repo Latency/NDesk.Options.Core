@@ -5,12 +5,8 @@
 // Date:     04/04/2024
 // ****************************************************************************
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using NDesk.Options;
-using Xunit;
 
 namespace Unit_Tests;
 
@@ -69,7 +65,7 @@ public class OptionSetTest
                 "Debug", v => debug = v != null
             },
             {
-                "E", v => { /* ignore */ }
+                "E", _ => { /* ignore */ }
             }
         };
         p.Parse(_("-DNAME", "-D", "NAME2", "-Debug", "-L/foo", "-L", "/bar", "-EDNAME3"));
@@ -119,7 +115,7 @@ public class OptionSetTest
                 "f=", (Foo v) => f = v
             },
             {
-                "v", v =>
+                "v", _ =>
                 {
                     ++verbose;
                 }
@@ -290,7 +286,7 @@ public class OptionSetTest
         Assert.Equal(p.GetOptionForName("h"),    p[0]);
         Assert.Equal(p.GetOptionForName("help"), p[0]);
 
-        Utils.AssertException(typeof(KeyNotFoundException), "The given key 'invalid' was not present in the dictionary.", p, v =>
+        Utils.AssertException(typeof(KeyNotFoundException), "The given key 'invalid' was not present in the dictionary.", p, _ =>
             {
                 p.GetOptionForName("invalid");
             }
@@ -298,7 +294,7 @@ public class OptionSetTest
 
         Utils.AssertException(typeof(ArgumentException), "prototypes must be null!", p, v =>
             {
-                v.Add("N|NUM=", (int n) =>
+                v.Add("N|NUM=", (int _) =>
                       { }
                 );
             }
@@ -318,10 +314,10 @@ public class OptionSetTest
         var p = new OptionSet
         {
             { "a=", v => a = v },
-            { "b", v => { } },
-            { "c", v => { } },
-            { "n=", (int v) => { } },
-            { "f=", (Foo v) => { } }
+            { "b", _ => { } },
+            { "c", _ => { } },
+            { "n=", (int _) => { } },
+            { "f=", (Foo _) => { } }
         };
 
         // missing argument
@@ -343,7 +339,7 @@ public class OptionSetTest
         // try to bundle with an option requiring a value
         Utils.AssertException(typeof(OptionException),       "Cannot bundle unregistered option '-z'.",                                                 p, v => { v.Parse(_("-cz", "extra")); });
         Utils.AssertException(typeof(ArgumentNullException), "Value cannot be null. (Parameter 'action')",                                              p, v => { v.Add("foo", (Action<string>)null); });
-        Utils.AssertException(typeof(ArgumentException),     "Cannot provide maxValueCount of 2 for OptionValueType.None. (Parameter 'maxValueCount')", p, v => { v.Add("foo", (k, val) => { /* ignore */ }); });
+        Utils.AssertException(typeof(ArgumentException),     "Cannot provide maxValueCount of 2 for OptionValueType.None. (Parameter 'maxValueCount')", p, v => { v.Add("foo", (_, _) => { /* ignore */ }); });
     }
 
     [Fact]
@@ -352,11 +348,11 @@ public class OptionSetTest
         var p = new OptionSet
         {
             {
-                "a", v =>
+                "a", _ =>
                 { }
             },
             {
-                "b", v =>
+                "b", _ =>
                 { }
             }
         };
@@ -427,10 +423,10 @@ public class OptionSetTest
     [Fact]
     public void Localization()
     {
-        var p = new OptionSet(f => "hello!")
+        var p = new OptionSet(_ => "hello!")
         {
             {
-                "n=", (int v) =>
+                "n=", (int _) =>
                 { }
             }
         };
@@ -524,13 +520,13 @@ public class OptionSetTest
         var p = new OptionSet
         {
             {
-                "a", v => a = "a"
+                "a", _ => a = "a"
             },
             {
-                "b", v => b = "b"
+                "b", _ => b = "b"
             },
             {
-                "c", v => c = "c"
+                "c", _ => c = "c"
             },
             {
                 "f=", v => f = v
@@ -616,22 +612,22 @@ public class OptionSetTest
         var p = new OptionSet
         {
             {
-                "p|indicator-style=", "append / indicator to directories", v => { }
+                "p|indicator-style=", "append / indicator to directories", _ => { }
             },
             {
-                "color:", "controls color info", v => { }
+                "color:", "controls color info", _ => { }
             },
             {
-                "color2:", "set {color}", v => { }
+                "color2:", "set {color}", _ => { }
             },
             {
-                "rk=", "required key/value option", (k, v) => { }
+                "rk=", "required key/value option", (_, _) => { }
             },
             {
-                "rk2=", "required {{foo}} {0:key}/{1:value} option", (k, v) => { }
+                "rk2=", "required {{foo}} {0:key}/{1:value} option", (_, _) => { }
             },
             {
-                "ok:", "optional key/value option", (k, v) => { }
+                "ok:", "optional key/value option", (_, _) => { }
             },
             {
                 "long-desc",
@@ -641,19 +637,19 @@ public class OptionSetTest
                                 "Also, a list:\n"                                                    +
                                 "  item 1\n"                                                         +
                                 "  item 2",
-                                v => { }
+                                _ => { }
             },
             {
-                "long-desc2", "IWantThisDescriptionToBreakInsideAWordGeneratingAutoWordHyphenation.", v => { }
+                "long-desc2", "IWantThisDescriptionToBreakInsideAWordGeneratingAutoWordHyphenation.", _ => { }
             },
             {
-                "h|?|help", "show help text", v => { }
+                "h|?|help", "show help text", _ => { }
             },
             {
-                "version", "output version information and exit", v => { }
+                "version", "output version information and exit", _ => { }
             },
             {
-                "<>", v => { }
+                "<>", _ => { }
             }
         };
 
@@ -692,12 +688,16 @@ public class OptionSetTest
     {
         protected override void InsertItem(int index, Option item)
         {
-            if (item.Prototype.ToLower() != item.Prototype)
+            if (item != null && !item.Prototype.Equals(item.Prototype, StringComparison.CurrentCultureIgnoreCase))
                 throw new ArgumentException("prototypes must be null!");
             base.InsertItem(index, item);
         }
 
-        protected override bool Parse(string option, OptionContext c) => c.Option != null ? base.Parse(option, c) : !GetOptionParts(option, out var f, out var n, out var s, out var v) ? base.Parse(option, c) : base.Parse(f + n.ToLower() + (v != null && s != null ? s + v : ""), c);
+        protected override bool Parse(string option, OptionContext c) => c.Option != null
+                                                                             ? base.Parse(option, c)
+                                                                             : !GetOptionParts(option, out var f, out var n, out var s, out var v)
+                                                                                 ? base.Parse(option, c)
+                                                                                 : base.Parse(f + n.ToLower() + (v != null && s != null ? s + v : ""), c);
 
         public Option GetOptionForName(string n) => base[n];
 
