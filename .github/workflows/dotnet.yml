@@ -42,7 +42,6 @@ jobs:
       if: matrix.os != 'self-hosted'
       with:
         dotnet-version: '8.0.x'
-        dotnet-quality: 'signed'
         source-url: ${{ env.NUGET_SERVER_URL }}
       env:
         NUGET_AUTH_TOKEN: ${{ secrets.NUGET_AUTH_TOKEN }}
